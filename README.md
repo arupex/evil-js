@@ -1,0 +1,70 @@
+# EvilJS - The Runtime Debugger for Lazy Developers
+Sometimes using a full blown debugger is too much, or not possible, thats when its time to get EVIL!
+
+
+[![npm version](https://badge.fury.io/js/evil-js.svg)](https://badge.fury.io/js/evil-js)
+[![dependencies](https://david-dm.org/arupex/evil-js.svg)](http://github.com/arupex/evil-js)
+![Build Status](https://api.travis-ci.org/arupex/evil-js.svg?branch=master) 
+![lifetimeDownloadCount](https://img.shields.io/npm/dt/evil-js.svg?maxAge=2592000)
+<a href='https://pledgie.com/campaigns/31873'><img alt='Pledge To Arupex!' src='https://pledgie.com/campaigns/31873.png?skin_name=chrome' border='0' ></a>
+
+
+#Hows it work?
+    
+    Evil does exactly what it sounds like, it does something EVIL, it adds a prototype function to Javascripts core Types
+    Evil Supports!
+    Object.prototype.evil
+    Number.prototype.evil
+    Boolean.prototype.evil
+    Array.prototype.evil
+    String.prototype.evil
+
+
+#Install
+
+    npm install evil-js --save
+    
+#Usage
+
+
+    require('evil-js'); 
+    //
+    // write some code
+    //
+    let fred = { x : 0 };
+    //
+    // do some stuff, and need to debug fred, because your lost as hell
+    // continue writing your code like usual! except use .evil() to access its value
+    //
+    if(fred.evil()){
+        // do stuff
+    }
+    
+Output :
+
+    [DEBUG]	:	{"x":0}
+    
+    
+#Advanced Usage
+
+Evil.log = console.log;
+    
+    Lets you modify the logger, by default its set to console.log, but you can set it to any method that takes in a String
+    
+Evil.pad = (typeof process !== 'undefined'?process.env.EVIL_PAD:false);
+    
+    pre/post pad evil logs, defaults to false so it doesnt pad, but if you set to ' ' (truthy) it will for instance add an extra line before and after the logs
+    
+Evil.stack = (typeof process !== 'undefined'?process.env.EVIL_STACK:false);
+    
+    outputs the stack trace of the evil caller, (removes evils internal part of the stack)
+    
+Evil.pretty = (typeof process !== 'undefined'?process.env.EVIL_PRETTY:false);
+
+    When evil outputs values it uses JSON.stringify(value, null, 0), pretty makes the 0 a 3
+    
+Evil.bypass = (typeof process !== 'undefined'?process.env.NODE_ENV==='production':false);
+
+    stops evil from being completely evil, still adds evil function but removes all functionality
+    
+Feel free to override these values at any point either by changing the env vars or by assigning Evil[property]
