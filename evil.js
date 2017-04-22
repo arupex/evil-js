@@ -11,14 +11,22 @@ Evil.pretty = (typeof process !== 'undefined'?process.env.EVIL_PRETTY:false);
 
 Evil.bypass = (typeof process !== 'undefined'?process.env.NODE_ENV==='production':false);
 
+try {
+    Evil.filter = (typeof process !== 'undefined' ? (process.env.EVIL_FILTER ? JSON.parse(process.env.EVIL_FILTER) : false) : false);
+}
+catch(e){//incase you pass something wrong here, lets not blow the world up, ok?
+    Evil.filter = false;
+}
+
 Evil.go = function(title){
 
-    var titleStr = '[DEBUG]\t:\t';
-    if (title) {
-        titleStr = '[' + title + ']\t:\t';
-    }
 
-    if(!Evil.bypass) {
+    if(!Evil.bypass && (!title || (!Evil.filter || (Evil.filter.indexOf(title) > -1) ) ) ) {
+        var titleStr = '[DEBUG]\t:\t';
+        if (title) {
+            titleStr = '[' + title + ']\t:\t';
+        }
+
         if (Evil.pad) {
             Evil.log(Evil.pad);
         }
@@ -80,3 +88,7 @@ Boolean.prototype.evil = Evil.go;
 Array.prototype.evil = Evil.go;
 
 String.prototype.evil = Evil.go;
+
+if(typeof global !== 'undefined'){
+    global.Evil = Evil;
+}

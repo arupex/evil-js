@@ -68,3 +68,34 @@ Evil.bypass = (typeof process !== 'undefined'?process.env.NODE_ENV==='production
     stops evil from being completely evil, still adds evil function but removes all functionality
     
 Feel free to override these values at any point either by changing the env vars or by assigning Evil[property]
+
+
+#True Evil
+
+    Evil is chainable?! well of course! it actually has to be
+
+    var variable = { key : '7' };
+
+    if(variable.evil('obj').key.evil('value')){
+    
+    }
+
+#Output
+
+    [obj]	:	if(variable.evil('obj').key.evil('value')){	 : 	{"key":"7"}
+    [value]	:	if(variable.evil('obj').key.evil('value')){	 : 	"7"
+
+
+# Labeling Evil
+    Evil allows you to label calls
+    obj.evil('my label')
+    
+    if you have Evil.filter set to an array it will only log ones whos label are contained in said array
+    
+    Evil.filter = ['safey'];
+    
+    obj.evil('yolo')
+    
+    obj.evil('safey')
+    
+Only safety will be debugged
