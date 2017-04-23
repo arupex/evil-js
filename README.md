@@ -9,7 +9,16 @@ Sometimes using a full blown debugger is too much, or not possible, thats when i
 <a href='https://pledgie.com/campaigns/31873'><img alt='Pledge To Arupex!' src='https://pledgie.com/campaigns/31873.png?skin_name=chrome' border='0' ></a>
 
 
-#Hows it work?
+# Why Evil?
+
+Theres a multitude of reasons evil-js is evil-js, and the primary method and object is "evil"
+ 
+  - evil - is no a reserved word, and probably will never be used by anyone else
+  - evil - is frankly a little evil, we've tried to make it as friendly and as "good" evil as possible, but its still adding a function to the prototype of core types, so its evil
+   - evil - is not a word you use in your code, if you do, well your probably a super-villian, but it should be easy to search for any references to evil so you can remove them after debugging (evil does let you bypass evil so its ignored, but really shouldnt be letting that get to production)
+   - evil - it sounded cool
+
+# Hows it work?
     
     Evil does exactly what it sounds like, it does something EVIL, it adds a prototype function to Javascripts core Types
     Evil Supports!
@@ -20,11 +29,11 @@ Sometimes using a full blown debugger is too much, or not possible, thats when i
     String.prototype.evil
 
 
-#Install
+# Install
 
     npm install evil-js --save
     
-#Usage
+# Usage
 
 
     require('evil-js'); 
@@ -45,7 +54,7 @@ Output :
     [DEBUG]	:	{"x":0}
     
     
-#Advanced Usage
+# Advanced Usage
 
 Evil.log = console.log;
     
@@ -70,7 +79,7 @@ Evil.bypass = (typeof process !== 'undefined'?process.env.NODE_ENV==='production
 Feel free to override these values at any point either by changing the env vars or by assigning Evil[property]
 
 
-#True Evil
+# True Evil
 
     Evil is chainable?! well of course! it actually has to be
 
@@ -80,7 +89,7 @@ Feel free to override these values at any point either by changing the env vars 
     
     }
 
-#Output
+# Output
 
     [obj]	:	if(variable.evil('obj').key.evil('value')){	 : 	{"key":"7"}
     [value]	:	if(variable.evil('obj').key.evil('value')){	 : 	"7"
